@@ -1,0 +1,29 @@
+@startuml
+class SmbServer {
+    +start()
+    +stop()
+}
+
+class ClientHandler {
+    +run()
+}
+
+class SmbHandshakeUtil {
+    +sendNegotiateResponse(out)
+}
+
+class FileRepository {
+    +saveFile(name, InputStream, long)
+    +openFile(name)
+}
+
+class AccessManager {
+    +canRead(user)
+    +canWrite(user)
+}
+
+SmbServer "1" o-- "*" ClientHandler
+ClientHandler --> FileRepository
+ClientHandler --> AccessManager
+ClientHandler --> SmbHandshakeUtil
+@enduml
