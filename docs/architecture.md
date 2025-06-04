@@ -11,8 +11,12 @@ each client.
 
 ### `ClientHandler`
 Processes commands from a single client. Supports uploading files using
-`PUT` and downloading files using `GET`. File access is checked using an
-`AccessManager` instance and data is stored via `FileRepository`.
+`PUT` and downloading files using `GET`. The handler now attempts to
+recognize an incoming SMB negotiation request (e.g. from a JCIFS client)
+and sends back a minimal response. After that basic handshake, clients
+must still speak the simple text protocol.
+File access is checked using an `AccessManager` instance and data is
+stored via `FileRepository`.
 
 ### `FileRepository`
 Stores files on the host filesystem under a configured directory. Exposes

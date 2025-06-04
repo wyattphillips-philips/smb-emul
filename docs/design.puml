@@ -8,6 +8,10 @@ class ClientHandler {
     +run()
 }
 
+class SmbHandshakeUtil {
+    +sendNegotiateResponse(out)
+}
+
 class FileRepository {
     +saveFile(name, InputStream, long)
     +openFile(name)
@@ -21,4 +25,5 @@ class AccessManager {
 SmbServer "1" o-- "*" ClientHandler
 ClientHandler --> FileRepository
 ClientHandler --> AccessManager
+ClientHandler --> SmbHandshakeUtil
 @enduml
